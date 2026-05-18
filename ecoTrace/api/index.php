@@ -1,5 +1,14 @@
 <?php
 
+// Clean up REQUEST_URI to prevent Vercel prefix 404 routing issues
+if (isset($_SERVER['REQUEST_URI'])) {
+    $_SERVER['REQUEST_URI'] = str_replace('/ecoTrace/api/index.php', '', $_SERVER['REQUEST_URI']);
+    $_SERVER['REQUEST_URI'] = str_replace('/api/index.php', '', $_SERVER['REQUEST_URI']);
+    if (empty($_SERVER['REQUEST_URI'])) {
+        $_SERVER['REQUEST_URI'] = '/';
+    }
+}
+
 // 1. Prepare writeable folders in /tmp for Vercel serverless environment
 $tmpDirs = ['/tmp/views', '/tmp/sessions', '/tmp/cache'];
 foreach ($tmpDirs as $dir) {
