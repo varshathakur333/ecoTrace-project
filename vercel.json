@@ -1,0 +1,36 @@
+{
+    "version": 2,
+    "outputDirectory": "ecoTrace/public",
+    "builds": [
+        {
+            "src": "ecoTrace/api/index.php",
+            "use": "vercel-php@0.7.2"
+        },
+        {
+            "src": "ecoTrace/public/**",
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/favicon.ico",
+            "dest": "/ecoTrace/public/favicon.ico"
+        },
+        {
+            "src": "/robots.txt",
+            "dest": "/ecoTrace/public/robots.txt"
+        },
+        {
+            "src": "/css/(.*)",
+            "dest": "/ecoTrace/public/css/$1"
+        },
+        {
+            "src": "/js/(.*)",
+            "dest": "/ecoTrace/public/js/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/ecoTrace/api/index.php"
+        }
+    ]
+}
