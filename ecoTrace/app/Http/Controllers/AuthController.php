@@ -27,8 +27,8 @@ class AuthController extends Controller
             'address' => 'required|string|max:500',
             'phone' => 'required|string|max:20',
             // Collector specific fields
-            'business_name' => 'required_if:role,collector|string|max:255',
-            'license_no' => 'required_if:role,collector|string|max:255',
+            'business_name' => 'required_if:role,collector|nullable|string|max:255',
+            'license_no' => 'required_if:role,collector|nullable|string|max:255',
         ], [
             'business_name.required_if' => 'The business name is required for collectors.',
             'license_no.required_if' => 'The license number is required for collectors.',
