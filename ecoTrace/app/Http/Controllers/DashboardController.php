@@ -54,23 +54,17 @@ class DashboardController extends Controller
 
     public function userDashboard(Request $request)
     {
-        $categories = Category::all();
-        
-        // Eager load collector (user) and category relations
-        $servicesQuery = Service::with(['user', 'category'])->where('status', 'active');
-
-        // Advanced filter search logic
-        if ($request->filled('location')) {
-            $servicesQuery->where('location', 'like', '%' . $request->location . '%');
-        }
-
-        if ($request->filled('category_id')) {
-            $servicesQuery->where('category_id', $request->category_id);
-        }
-
-        $services = $servicesQuery->get();
         $myBookings = Booking::with('service.user')->where('user_id', Auth::id())->orderBy('booking_date', 'desc')->get();
+        
+        // Calculate personal metrics dynamically
+        $totalPickups = $myBookings->count();
+        $totalWeight = $myBookings->where('status', 'completed')->sum('weight');
+        $carbonSaved = $totalWeight * 1.44; // 1.44 kg of CO2 saved per kg of e-waste recycled
+        
+        $totalRefund = $myBookings->where('status', 'completed')->sum(function($booking) {
+            return $booking->weight * ($booking->service->cost_per_kg ?? 0);
+        });
 
-        return view('dashboard.user', compact('categories', 'services', 'myBookings'));
+        return view('dashboard.user_insights', compact('myBookings', 'totalPickups', 'totalWeight', 'carbonSaved', 'totalRefund'));
     }
 }
