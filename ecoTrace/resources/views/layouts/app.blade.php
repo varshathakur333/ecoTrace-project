@@ -272,10 +272,10 @@
             </a>
             
             <div class="nav-links">
-                <a href="{{ route('search') }}">Find Pickups</a>
+                <a href="{{ route('search') }}">{{ __('find_pickups') }}</a>
                 
                 @auth
-                    <a href="{{ route('dashboard') }}">Dashboard</a>
+                    <a href="{{ route('dashboard') }}">{{ __('dashboard') }}</a>
                     <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                         @csrf
                         <button type="submit" style="background:none; border:none; cursor:pointer; font-weight:600; text-transform:uppercase; font-size:14px; font-family:inherit;">

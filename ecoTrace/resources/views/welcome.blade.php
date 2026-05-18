@@ -15,19 +15,19 @@
                         {{ __('collect_ewaste') }}
                         <span class="material-icons">arrow_forward</span>
                     </a>
-                    <span class="badge badge-verified" style="font-size: 14px; padding: 6px 12px;">Active in Delhi, NCR & Mumbai</span>
+                    <span class="badge badge-verified" style="font-size: 14px; padding: 6px 12px;">{{ __('active_cities') }}</span>
                 </div>
             </div>
             <div>
                 <!-- Simulated AI / Impact Sticker Card -->
                 <x-card style="background-color: var(--soft-lilac); transform: rotate(1deg);">
-                    <div style="font-family: var(--font-mono); font-size: 14px; margin-bottom: 12px;">VERIFIED STATISTICS // 2026</div>
+                    <div style="font-family: var(--font-mono); font-size: 14px; margin-bottom: 12px;">{{ __('verified_stats') }}</div>
                     <div style="font-family: var(--font-display); font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 8px; color: var(--primary);">482,901 KG</div>
-                    <div style="font-weight: 600; text-transform: uppercase; font-size: 14px; margin-bottom: 24px;">Kilograms of e-waste safely diverted from landfills.</div>
+                    <div style="font-weight: 600; text-transform: uppercase; font-size: 14px; margin-bottom: 24px;">{{ __('diverted_desc') }}</div>
                     
                     <div style="border-top: 2px solid var(--near-black); padding-top: 16px;">
-                        <span style="font-family: var(--font-mono); font-size: 12px; background: var(--acid-lime); padding: 2px 6px; border: 2px solid var(--near-black); border-radius: 4px;">AI COMPLIANCE CHECK</span>
-                        <p style="font-size: 13px; font-weight: 500; margin-top: 8px; font-family: var(--font-mono);">Optimized pickup routes divert ~12.4% more carbon emissions daily.</p>
+                        <span style="font-family: var(--font-mono); font-size: 12px; background: var(--acid-lime); padding: 2px 6px; border: 2px solid var(--near-black); border-radius: 4px;">{{ __('ai_check') }}</span>
+                        <p style="font-size: 13px; font-weight: 500; margin-top: 8px; font-family: var(--font-mono);">{{ __('ai_check_desc') }}</p>
                     </div>
                 </x-card>
             </div>
@@ -61,10 +61,10 @@
                 {{ __('stop_scrolling') }}
             </h2>
             <p style="font-size: 18px; max-width: 600px; margin: 0 auto 32px; font-family: var(--font-editorial); font-style: italic; color: #eeeeec;">
-                Ready to clear out your desk and receive instant carbon offsets?
+                {{ __('cta_desc') }}
             </p>
             <a href="{{ route('register') }}" class="btn-action" style="background-color: var(--acid-lime); color: var(--near-black);">
-                Get Started Now
+                {{ __('get_started') }}
             </a>
         </x-card>
 
