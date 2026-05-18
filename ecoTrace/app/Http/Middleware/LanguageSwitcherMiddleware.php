@@ -14,7 +14,7 @@ class LanguageSwitcherMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = $request->get('lang') ?? session('locale') ?? $request->cookie('locale') ?? config('app.locale');
+        $locale = $request->get('lang') ?? session('locale') ?? $_COOKIE['locale'] ?? $request->cookie('locale') ?? config('app.locale');
         
         if (in_array($locale, ['en', 'hi'])) {
             App::setLocale($locale);

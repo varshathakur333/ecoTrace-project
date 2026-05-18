@@ -86,6 +86,7 @@ Route::get('/lang/switch/{locale}', function ($locale) {
     if (in_array($locale, ['en', 'hi'])) {
         session(['locale' => $locale]);
         cookie()->queue('locale', $locale, 43200); // 30 days
+        setcookie('locale', $locale, time() + 86400 * 30, '/', '', true, false); // Native Secure Cookie
     }
     return redirect()->back()->with('success', 'Language switched successfully!');
 })->name('lang.switch');
